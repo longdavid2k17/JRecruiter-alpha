@@ -12,6 +12,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     ProfileComponent,
     BoardAdminComponent,
     BoardUserComponent,
-    BoardModeratorComponent
+    BoardModeratorComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
