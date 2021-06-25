@@ -1,0 +1,85 @@
+<div class="col-md-12">
+    <div id="logreg-forms">
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Nie musisz tworzyć kolejnego konta!<br> Zarejestruj się</h1>
+        <div class="social-login">
+          <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> poprzez Facebook</span></button>
+          <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> poprzez Google+</span></button>
+        </div>
+        <p style="text-align:center"> lub utwórz klasyczne konto  </p>
+        <hr/>
+        <label for="username">Nazwa użytkownika</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          placeholder="Login"
+          #username="ngModel"
+        />
+        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+          <div *ngIf="username.errors.required">Nazwa użytkownika jest wymagana</div>
+          <div *ngIf="username.errors.minlength">
+            Nazwa użytkownika musi mieć przynajmniej 3 znaki
+          </div>
+          <div *ngIf="username.errors.maxlength">
+            Nazwa użytkownika może mieć maksymalnie 20 znaków
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          placeholder="Adres email"
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">Email jest wymagany</div>
+          <div *ngIf="email.errors.email">
+            Email musi być poprawny
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          placeholder="Hasło"
+          #password="ngModel"
+        />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">Hasło jest wymagane</div>
+          <div *ngIf="password.errors.minlength">
+            Hasło musi mieć przynajmniej 6 znaków
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <span><a href="#" id="forgot_pswd">Rejestrując się akceptujesz regulamin</a></span>
+        <button class="btn btn-primary btn-block">Zarejestruj się</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Rejestracja nieudana!<br />{{ errorMessage }}
+      </div>
+    </form>
+    </div>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Zarejestrowałeś się poprawnie!
+    </div>
+</div>
