@@ -4,22 +4,22 @@
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <app-search></app-search>
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Promowane oferty</a>
+        <a href="/home" class="nav-link" routerLink="home">Najnowsze oferty</a>
       </li>
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Strona główna</a>
+        <a href="/search-job" class="nav-link" routerLink="search-job">Przeglądaj oferty pracy</a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Zarządzaj</a>
       </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a href="/mod" class="nav-link" routerLink="mod">Panel moderatora</a>
-      </li>
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">Użytkownik</a>
-      </li>
+      <div ngbDropdown class="d-inline-block" *ngIf="showModeratorBoard">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Panel moderatora</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Dodaj ogłoszenie</button>
+          <button ngbDropdownItem>Zarządzaj ogłoszeniami</button>
+        </div>
+      </div>
     </ul>
-
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
@@ -32,7 +32,7 @@
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        <a href="/profile" class="nav-link" routerLink="profile" title="Zarządzaj swoim profilem">{{ username }}</a>
       </li>
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">Wyloguj się</a>
@@ -44,3 +44,46 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="mb-4">
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/dlugi_gawron/" role="button"><i class="fab fa-instagram"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/longdavid2k17" role="button"><i class="fab fa-github"></i></a>
+    </section>
+    <section class="">
+      <form action="">
+        <div class="row d-flex justify-content-center">
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Zapisz się do newslettera</strong>
+            </p>
+          </div>
+          <div class="col-md-5 col-12">
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example2" class="form-control" placeholder="Adres email"/>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Subskrybuj!
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <section class="mb-4">
+      <p>
+        Projekt został wykonany w celu doskonalenia swoich umiejętności programistycznych oraz rozwinięcia prototypowego pomysłu na portal JRecruiters. Aplikacja ta prezentuje uproszczony
+        oraz bardziej przyjazny dla pracowników proces poszukiwania wymarzonej pracy. Dzięki niej nie trzeba w nieskończoność czekać na odpowiedź od firmy o stanie procesu rekrutacji - sam jesteś na bieżąco
+        w stanie sprawdzić czy twoja aplikacja dalej jest "w grze".
+      </p>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://github.com/longdavid2k17">Dawid Kańtoch</a>
+  </div>
+</footer>

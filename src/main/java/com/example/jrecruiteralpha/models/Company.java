@@ -1,0 +1,33 @@
+package com.example.jrecruiteralpha.models;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "companies")
+@Data
+public class Company
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Size(max = 50)
+    private String companyName;
+
+    @NotBlank
+    @Size(max = 120)
+    private String localization;
+
+    @Size(max = 1000)
+    private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
+    private Set<JobOffer> jobOffers = new HashSet<>();
+}

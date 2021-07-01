@@ -1,0 +1,64 @@
+<div class="container-fluid ">
+  <div class="d-md-inline-flex row justify-content-center">
+      <div class="card shadow-lg border-0 py-2">
+        <div class="card-header border-0 mb-0">
+          <div class="row justify-content-between">
+            <div class="col-auto col-sm-auto">
+              <h4>
+                <div *ngIf="offer.contractType =='Umowa o prace'">
+                  <span class="badge badge-pill badge-success">{{offer.contractType}}</span>
+                </div>
+                <div *ngIf="offer.contractType =='Umowa zlecenie'">
+                  <span class="badge badge-pill badge-primary">{{offer.contractType}}</span>
+                </div>
+                <div *ngIf="offer.contractType =='Staż'">
+                  <span class="badge badge-pill badge-warning">{{offer.contractType}}</span>
+                </div>
+              </h4>
+            </div>
+            <div class="col-auto col-sm-auto">
+              <div class="row mx-auto pt-2">
+                <h6>od {{offer.lowEndPaymentRange}} do {{ offer.highEndPaymentRange }} PLN</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body text-center pb-0 mt-0 pt-3">
+          <div class="d-block">
+            <h3 class="card-title mb-0 font-weight-bold">{{offer.positionTitle}}</h3> <small class="text-info my-1"> <i class="fa fa-file-code-o small"></i> Nazwa firmy</small>
+          </div>
+          <div class="d-block">
+            <h5 class="card-title mb-0 font-weight-bold">Wymagania</h5>
+          </div>
+          <div class="d-inline-flex row mb-3 ">
+            <div class="col-md-auto">
+              <ul class="list-group my-0">
+                <li class="list-inline-item"> <span class="badge badge-pill badge-outline ">UI</span></li>
+                <li class="list-inline-item"> <span class="badge badge-pill badge-outline ">UX</span></li>
+                <li class="list-inline-item"> <span class="badge badge-pill badge-outline ">photoshop</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="d-flex row mb-0">
+            <div class="col ">
+              <p class="text-muted" style="text-align: left"> {{ offer.positionDescription }}  <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed maximus, leo nec ultrices iaculis, est lectus vulputate arcu, sit amet accumsan nisl justo id turpis. Suspendisse sed dignissim augue, nec sollicitudin magna. Nunc finibus maximus auctor. Donec accumsan lacus urna, a tincidunt orci dapibus in. Nunc imperdiet vehicula ex, quis condimentum erat. Ut maximus eleifend nunc, at facilisis magna tempor vitae. Aliquam lobortis, risus vitae pharetra lacinia, tortor est fringilla tellus, in tincidunt velit neque eu erat. Aliquam fringilla posuere lobortis.
+
+                Duis in lorem metus. Praesent eu nisl sed quam condimentum fringilla quis et orci. Ut ac neque placerat, dictum massa sit amet, placerat nisi. Nulla congue erat eu consectetur cursus. Donec diam massa, tristique eu tellus lacinia, eleifend pulvinar augue. Pellentesque et dignissim enim, sed pretium quam. In sed nulla quis nulla rhoncus dignissim non a mi. Curabitur rhoncus nisi ex, quis fermentum tortor consectetur quis. Fusce sapien mi, malesuada eget lectus a, ullamcorper tincidunt libero. Proin nec nibh quis neque rhoncus vulputate sit amet sed ex. Phasellus ut feugiat enim. Ut vehicula mauris non urna facilisis, at fringilla sem congue. Nullam eget pretium neque.
+
+                Sed vitae maximus quam. Curabitur elementum erat dui, sed luctus lorem porttitor id. Etiam dictum est in ornare maximus. Maecenas turpis libero, vulputate sed erat et, laoreet scelerisque mi. Cras ut est sem. Suspendisse placerat tortor eget urna efficitur finibus. Nam vitae tempus enim. Nullam id ultrices tortor. Nam vulputate quis dui tincidunt porttitor. Curabitur sit amet eros quis magna sollicitudin auctor sit amet quis enim. Donec pulvinar ligula lectus, id fermentum arcu mattis vitae.
+
+                Integer elementum placerat elit sit amet volutpat. Maecenas iaculis luctus ipsum. Nullam placerat ex vitae eros fringilla tempor. Integer ut urna placerat, commodo urna tristique, venenatis quam. Sed fringilla augue eu mauris ullamcorper imperdiet. Nullam pulvinar aliquet lectus, ac dignissim tellus gravida quis. Donec egestas tellus non est ornare accumsan. Donec vehicula mauris turpis, eget malesuada est fermentum vitae. Suspendisse euismod arcu justo, vel vestibulum ante sollicitudin eu. Fusce sed arcu eget sem laoreet auctor. Suspendisse pharetra libero eget ligula sagittis, quis faucibus ipsum posuere. Sed tempus ac metus eget consequat. Pellentesque consectetur congue libero nec sollicitudin. Duis nec mollis nisi, id facilisis neque. Curabitur lectus dui, pharetra sed diam sed, efficitur malesuada odio.
+
+                Etiam non sodales turpis. Proin imperdiet fringilla ante quis dignissim. Phasellus non nunc et tortor feugiat vestibulum. Vestibulum posuere metus enim, sed condimentum ligula tempus at. Integer auctor gravida sapien, vel vehicula justo pharetra quis. Aenean dignissim nec tortor mattis ultrices. Vestibulum pulvinar molestie laoreet. Duis tristique eu eros a convallis. Morbi dictum magna at fermentum condimentum.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <hr class="hl">
+        </div>
+        <div class="card-footer border-0 text-center mx-auto ">
+          <h5 class="footer"> <a routerLink="/oferta/{{offer.id}}" class="text-decoration-none"> Aplikuj</a></h5>
+        </div>
+      </div>
+  </div>
+</div>

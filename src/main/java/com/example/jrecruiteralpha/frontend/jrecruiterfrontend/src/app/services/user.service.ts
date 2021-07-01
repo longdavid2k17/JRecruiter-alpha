@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {User} from "../common/User";
+import {map} from "rxjs/operators";
+import {JobOffer} from "../common/JobOffer";
 
 const API_URL = 'http://localhost:8080/api/test/';
+const USER_GET_BY_EMAIL_URL = 'http://localhost:8080/api/users';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +30,17 @@ export class UserService {
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
+
+  getUserByEmail(email:string):Observable<User>
+  {
+    const searchUrl=`http://localhost:8080/users/search/getByEmail?email=${email}`;
+    return this.http.get<User>(searchUrl);
+  }
+}
+
+interface GetResponseUser{
+  _embedded:{
+    user: User[];
+  }
+
 }

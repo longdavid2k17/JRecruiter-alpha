@@ -34,6 +34,21 @@ public class User
     @Size(max = 120)
     private String password;
 
+    @Size(max = 150)
+    private String profileImgUrl;
+
+    @NotBlank
+    @Size(max = 12)
+    private String phoneNumber;
+
+    @NotBlank
+    @Size(max = 50)
+    private String name;
+
+    @NotBlank
+    @Size(max = 50)
+    private String surname;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -43,9 +58,12 @@ public class User
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, String name, String surname, String phoneNumber) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
     }
 }

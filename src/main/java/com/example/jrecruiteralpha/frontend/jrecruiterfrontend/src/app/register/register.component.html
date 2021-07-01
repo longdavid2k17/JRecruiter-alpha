@@ -32,6 +32,36 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="email">Imię</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          placeholder="Imię"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors.required">Imie jest wymagane</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Nazwisko</label>
+        <input
+          type="text"
+          class="form-control"
+          name="surname"
+          [(ngModel)]="form.surname"
+          required
+          placeholder="Nazwisko"
+          #surname="ngModel"
+        />
+        <div class="alert-danger" *ngIf="surname.errors && f.submitted">
+          <div *ngIf="surname.errors.required">Nazwisko jest wymagane</div>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="email">Email</label>
         <input
           type="email"
@@ -48,6 +78,21 @@
           <div *ngIf="email.errors.email">
             Email musi być poprawny
           </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Numer telefonu</label>
+        <input
+          type="text"
+          class="form-control"
+          name="phoneNumber"
+          [(ngModel)]="form.phoneNumber"
+          required
+          placeholder="+00000000000"
+          #phoneNumber="ngModel"
+        />
+        <div class="alert-danger" *ngIf="phoneNumber.errors && f.submitted">
+          <div *ngIf="phoneNumber.errors.required">Numer telefonu jest wymagany</div>
         </div>
       </div>
       <div class="form-group">
