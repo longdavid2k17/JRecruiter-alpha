@@ -1,6 +1,8 @@
 package com.example.jrecruiteralpha.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -10,7 +12,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "companies")
-@Data
+@Getter
+@Setter
 public class Company
 {
     @Id
@@ -30,4 +33,15 @@ public class Company
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private Set<JobOffer> jobOffers = new HashSet<>();
+
+    @Override
+    public String toString()
+    {
+        return "Company{" +
+                "id=" + id +
+                ", companyName='" + companyName + '\'' +
+                ", localization='" + localization + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

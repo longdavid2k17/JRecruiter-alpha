@@ -1,5 +1,6 @@
-export class Company{
-  id:number=0;
-  companyName:string="";
-  description:string="";
+export interface Company{
+  id:number;
+  companyName:string;
+  localization:string;
+  description:string;
 }

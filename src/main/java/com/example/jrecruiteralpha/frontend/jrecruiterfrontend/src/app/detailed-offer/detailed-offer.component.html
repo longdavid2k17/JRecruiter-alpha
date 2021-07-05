@@ -5,14 +5,17 @@
           <div class="row justify-content-between">
             <div class="col-auto col-sm-auto">
               <h4>
-                <div *ngIf="offer.contractType =='Umowa o prace'">
-                  <span class="badge badge-pill badge-success">{{offer.contractType}}</span>
-                </div>
+                <div *ngIf="offer.contractType =='Umowa o pracę'">
+                <span class="badge badge-pill badge-success">{{offer.contractType}}</span>
+              </div>
                 <div *ngIf="offer.contractType =='Umowa zlecenie'">
                   <span class="badge badge-pill badge-primary">{{offer.contractType}}</span>
                 </div>
                 <div *ngIf="offer.contractType =='Staż'">
                   <span class="badge badge-pill badge-warning">{{offer.contractType}}</span>
+                </div>
+                <div *ngIf="offer.contractType =='Umowa o dzieło'">
+                  <span class="badge badge-pill badge-danger">{{offer.contractType}}</span>
                 </div>
               </h4>
             </div>
@@ -25,7 +28,7 @@
         </div>
         <div class="card-body text-center pb-0 mt-0 pt-3">
           <div class="d-block">
-            <h3 class="card-title mb-0 font-weight-bold">{{offer.positionTitle}}</h3> <small class="text-info my-1"> <i class="fa fa-file-code-o small"></i> Nazwa firmy</small>
+            <h3 class="card-title mb-0 font-weight-bold">{{offer.positionTitle}}</h3> <small class="text-info my-1"> <i class="fa fa-file-code-o small"></i> {{company.companyName}}</small>
           </div>
           <div class="d-block">
             <h5 class="card-title mb-0 font-weight-bold">Wymagania</h5>

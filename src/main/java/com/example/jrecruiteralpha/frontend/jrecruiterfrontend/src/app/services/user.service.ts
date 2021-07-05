@@ -33,7 +33,7 @@ export class UserService {
 
   getUserByEmail(email:string):Observable<User>
   {
-    const searchUrl=`http://localhost:8080/users/search/getByEmail?email=${email}`;
+    const searchUrl=`http://localhost:8080/users/search/findByEmail?email=${email}`;
     return this.http.get<User>(searchUrl);
   }
 }

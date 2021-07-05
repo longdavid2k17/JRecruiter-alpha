@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {JobOffer} from "../common/JobOffer";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {CompanyServiceService} from "./company-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,13 @@ import {map} from "rxjs/operators";
 export class JobOfferService
 {
   private baseUrl='http://localhost:8080/joboffers';
+  private companiesUrl='http://localhost:8080/companies';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private companyService:CompanyServiceService) { }
 
-  getAllOffers():Observable<JobOffer[]>{
-    return this.httpClient.get<GetResponseJobOffer>(this.baseUrl).pipe(map(response=>response._embedded.joboffers))
+  getAllOffers():Observable<JobOffer[]>
+  {
+    return this.getOffers(this.baseUrl);
   }
 
   searchOffers(theKeyword: any): Observable<JobOffer[]>
@@ -31,8 +34,17 @@ export class JobOfferService
 
   getOffer(offerId: number) :Observable<JobOffer>
   {
-    const productUrl = `${this.baseUrl}/${offerId}`;
-    return this.httpClient.get<JobOffer>(productUrl);
+    const offerUrl = `${this.baseUrl}/${offerId}`;
+    return this.httpClient.get<JobOffer>(offerUrl);
+  }
+
+  getJobOffersPaginate(thePage: number,
+                         thePageSize: number): Observable<GetResponseJobOffer> {
+
+    // need to build URL based on category id, page and size
+    const searchUrl = `${this.baseUrl}?page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponseJobOffer>(searchUrl);
   }
 }
 

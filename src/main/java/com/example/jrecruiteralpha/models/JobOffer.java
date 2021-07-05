@@ -1,6 +1,8 @@
 package com.example.jrecruiteralpha.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,11 +11,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "job_offers")
-@Data
+@Getter
+@Setter
 public class JobOffer
 {
     @Id
@@ -39,11 +41,25 @@ public class JobOffer
     private String contractType;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id",nullable = false)
     private Company company;
 
     @NotNull
     @CreatedDate
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     Date creationDate;
+
+    @Override
+    public String toString() {
+        return "JobOffer{" +
+                "id=" + id +
+                ", positionTitle='" + positionTitle + '\'' +
+                ", positionDescription='" + positionDescription + '\'' +
+                ", lowEndPaymentRange=" + lowEndPaymentRange +
+                ", highEndPaymentRange=" + highEndPaymentRange +
+                ", contractType='" + contractType + '\'' +
+                ", company=" + company +
+                ", creationDate=" + creationDate +
+                '}';
+    }
 }

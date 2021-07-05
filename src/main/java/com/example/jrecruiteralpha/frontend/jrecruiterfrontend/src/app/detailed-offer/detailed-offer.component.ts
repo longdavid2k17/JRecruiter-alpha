@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {JobOffer} from "../common/JobOffer";
 import {JobOfferService} from "../services/job-offer.service";
 import {ActivatedRoute} from "@angular/router";
+import {CompanyServiceService} from "../services/company-service.service";
+import {Company} from "../common/Company";
 
 @Component({
   selector: 'app-detailed-offer',
@@ -10,9 +12,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DetailedOfferComponent implements OnInit {
 
-  offer:JobOffer = new JobOffer();
+  company!:Company;
+  offer!:JobOffer;
 
-  constructor(private jobOfferService:JobOfferService, private route:ActivatedRoute) { }
+  constructor(private jobOfferService:JobOfferService, private route:ActivatedRoute,private companyService:CompanyServiceService) { }
 
   ngOnInit(): void
   {
@@ -29,6 +32,12 @@ export class DetailedOfferComponent implements OnInit {
     this.jobOfferService.getOffer(offerId).subscribe(
       data => {
         this.offer = data;
+      }
+    )
+    this.companyService.getCompanyByJobOfferId(offerId).subscribe(
+      data =>{
+        this.company = data;
+        console.log(this.company);
       }
     )
   }

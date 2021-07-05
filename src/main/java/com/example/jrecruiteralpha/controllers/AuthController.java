@@ -78,14 +78,14 @@ public class AuthController
         {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Błąd: Użytkownik z takim loginem istnieje!"));
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail()))
         {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new MessageResponse("Błąd: Użytkownik z takim adresem email istnieje!"));
         }
 
         User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()), signUpRequest.getName(), signUpRequest.getSurname(), signUpRequest.getPhoneNumber());

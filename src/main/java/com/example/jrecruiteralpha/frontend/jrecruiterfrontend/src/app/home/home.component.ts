@@ -4,6 +4,8 @@ import {JobOfferService} from "../services/job-offer.service";
 import {JobOffer} from "../common/JobOffer";
 import {ActivatedRoute} from "@angular/router";
 import {logger} from "codelyzer/util/logger";
+import {CompanyServiceService} from "../services/company-service.service";
+import {Company} from "../common/Company";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
   theTotalElements: number = 0;
   page_size:number=5;
 
-  constructor(private jobOfferService: JobOfferService,private route: ActivatedRoute) { }
+  constructor(private jobOfferService: JobOfferService,private route: ActivatedRoute,private companyService:CompanyServiceService) { }
 
   ngOnInit(): void
   {
@@ -60,13 +62,21 @@ export class HomeComponent implements OnInit {
   {
     this.jobOfferService.getAllOffers().subscribe(
       data => {
-        console.log(data);
         this.jobOffers = data;
       },
-      err => {
+      err =>
+      {
         this.content = JSON.parse(err.error).message;
       }
     );
-    //console.log("Pobrane ID firmy: "+this.jobOffers[1].company)
+    setTimeout(()=> {
+      this.jobOffers.forEach( (element) =>
+      {
+        this.companyService.getCompanyByJobOfferId(element.id).subscribe(data =>{
+          element.company=data;
+          console.log(data);
+        })
+      });
+    },100)
   }
 }

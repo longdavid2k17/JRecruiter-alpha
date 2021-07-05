@@ -6,7 +6,7 @@
           <div class="row justify-content-between">
             <div class="col-auto col-sm-auto">
               <h4>
-                <div *ngIf="tempOffer.contractType =='Umowa o prace'">
+                <div *ngIf="tempOffer.contractType =='Umowa o pracę'">
                   <span class="badge badge-pill badge-success">{{tempOffer.contractType}}</span>
                 </div>
                 <div *ngIf="tempOffer.contractType =='Umowa zlecenie'">
@@ -15,7 +15,9 @@
                 <div *ngIf="tempOffer.contractType =='Staż'">
                   <span class="badge badge-pill badge-warning">{{tempOffer.contractType}}</span>
                 </div>
-
+                <div *ngIf="tempOffer.contractType =='Umowa o dzieło'">
+                  <span class="badge badge-pill badge-danger">{{tempOffer.contractType}}</span>
+                </div>
               </h4>
             </div>
             <div class="col-auto col-sm-auto">
@@ -27,7 +29,7 @@
         </div>
         <div class=" card-body text-center pb-0 mt-0 pt-3">
           <div class="d-block">
-            <h5 class="card-title mb-0 font-weight-bold">{{tempOffer.positionTitle}}</h5> <small class="text-info my-1"> <i class="fa fa-file-code-o small"></i> Nazwa firmy</small>
+            <h5 class="card-title mb-0 font-weight-bold">{{tempOffer.positionTitle}}</h5> <small class="text-info my-1"> <i class="fa fa-file-code-o small"></i>{{tempOffer.company.companyName}}</small>
           </div>
           <div class="d-inline-flex row mb-3 ">
             <div class="col-md-auto">

@@ -7,4 +7,5 @@ export class User
   surname:string="";
   profileImgUrl:string="";
   phoneNumber:string="";
+  cvPath:string="";
 }

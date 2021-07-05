@@ -37,6 +37,9 @@ public class User
     @Size(max = 150)
     private String profileImgUrl;
 
+    @Size(max = 150)
+    private String cvPath;
+
     @NotBlank
     @Size(max = 12)
     private String phoneNumber;

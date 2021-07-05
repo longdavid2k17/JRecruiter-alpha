@@ -11,11 +11,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { SearchComponent } from './search/search.component';
 import { SearchJobComponent } from './search-job/search-job.component';
 import { DetailedOfferComponent } from './detailed-offer/detailed-offer.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +30,17 @@ import { DetailedOfferComponent } from './detailed-offer/detailed-offer.componen
     BoardModeratorComponent,
     SearchComponent,
     SearchJobComponent,
-    DetailedOfferComponent
+    DetailedOfferComponent,
+    UploadComponent
   ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        NgbModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

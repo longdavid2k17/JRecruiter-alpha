@@ -19,21 +19,16 @@ export class ProfileComponent implements OnInit {
   {
     this.currentUserFromToken = this.token.getUser();
     this.getProfileData();
-    console.log(this.currentUserFromRepo);
+
   }
 
   getProfileData()
   {
     this.userService.getUserByEmail(this.currentUserFromToken.email).subscribe(data=>
       {
-        //console.log(data);
-        this.currentUserFromRepo.id=data.id;
-        this.currentUserFromRepo.name=data.name;
-        this.currentUserFromRepo.username=data.username;
-        this.currentUserFromRepo.surname=data.surname;
-        this.currentUserFromRepo.profileImgUrl=data.profileImgUrl;
-        this.currentUserFromRepo.phoneNumber=data.phoneNumber;
-        this.currentUserFromRepo.email=data.email;}
+        this.currentUserFromRepo = data;
+        console.log(this.currentUserFromRepo);
+      }
     );
   }
 
